@@ -9,6 +9,7 @@ import Employees from "./pages/Employees";
 import AddEmployee from "./pages/AddEmployee";
 import EditEmployee from "./pages/EditEmployee";
 
+
 function App() {
   return (
   <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/employees" element={<Employees />} />
           <Route path="/add-employee" element={<AddEmployee />} />
           <Route path="/edit/:id" element={<EditEmployee />} />
+          
         </Routes>
       </div>
     </div> {/* This closes the "flex" div */}
