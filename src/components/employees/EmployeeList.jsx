@@ -16,7 +16,14 @@ const EmployeeList = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {employees.map((emp) => (
-        <EmployeeCard key={emp.id} employee={emp} />
+          <EmployeeCard
+    key={emp.id}
+    employee={emp}
+    onDelete={(id) => {
+      setEmployees(employees.filter((e) => e.id !== id));
+    }}
+  />
+
       ))}
     </div>
   );
