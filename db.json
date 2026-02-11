@@ -23,14 +23,6 @@
       "department": "IT",
       "email": "krishna009@gmail.com",
       "status": "Active"
-    },
-    {
-      "id": "0a7a",
-      "name": "Krish Kapoor",
-      "role": "Senior SDE-II",
-      "department": "Cloud and Devops",
-      "email": "krishk02@gmail.com",
-      "status": "Active"
     }
   ]
 }

@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import ConfirmModal from "../common/ConfirmModal";
 
 const EmployeeCard = ({ employee, onDelete }) => {
+  const [showModal, setShowModal] = useState(false);
+
   const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:3001/employees/${employee.id}`);
-      onDelete(employee.id); // notify parent to refresh list
+      onDelete(employee.id); // update list
+      setShowModal(false);   // close modal
     } catch (error) {
       console.error("Error deleting employee:", error);
     }
@@ -17,14 +21,22 @@ const EmployeeCard = ({ employee, onDelete }) => {
       <p>{employee.role} - {employee.department}</p>
       <p>{employee.email}</p>
       <p>Status: {employee.status}</p>
+
       <div className="flex gap-2 mt-2">
         <button
-          onClick={handleDelete}
-          className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700"
+          onClick={() => setShowModal(true)}
+          className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition"
         >
           Delete
         </button>
       </div>
+
+      {showModal && (
+        <ConfirmModal
+          onConfirm={handleDelete}
+          onCancel={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 };
